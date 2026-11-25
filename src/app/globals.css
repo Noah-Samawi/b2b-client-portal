@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens – strict dark mode only (no light theme, no prefers-color-scheme switch).
+ * Neutral zinc palette, one accent (emerald). Values follow shadcn/ui token names.
+ */
+:root {
+  color-scheme: dark;
+  --radius: 0.75rem; /* 12px – rounded-xl */
+  --background: oklch(0.141 0.005 285.823);      /* zinc-950 */
+  --foreground: oklch(0.985 0 0);                 /* zinc-50 */
+  --card: oklch(0.18 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.21 0.006 285.885);           /* zinc-900 */
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.765 0.177 163.223);          /* emerald-400 */
+  --primary-foreground: oklch(0.141 0.005 285.823);
+  --secondary: oklch(0.274 0.006 286.033);        /* zinc-800 */
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.21 0.006 285.885);
+  --muted-foreground: oklch(0.742 0.012 286.067); /* ~zinc-400, AA on zinc-950/900 */
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);       /* red-400 */
+  --destructive-foreground: oklch(0.141 0.005 285.823);
+  --warning: oklch(0.828 0.189 84.429);           /* amber-400 */
+  --info: oklch(0.746 0.16 232.661);              /* sky-400 */
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.765 0.177 163.223);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-xl: var(--radius);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html,
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
